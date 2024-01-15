@@ -1,9 +1,35 @@
 async function submitForm() {
   if (validateForm()) {
-    await generatePDF().then(() => {
-      document.getElementById("pdfForm").submit();
-    });
+    try {
+      const formData = new FormData(document.getElementById("pdfForm"));
+      const response = await fetch("database.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        await generatePDF();
+      } else {
+        console.error("Error in database operation");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
+}
+
+function generatePDF() {
+  return new Promise((resolve, reject) => {
+    try {
+      var element = document.getElementById("container");
+      html2pdf(element, function (pdf) {
+        resolve();
+      });
+      alert("User Added to Database Successfully");
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
 
 function validateForm() {
@@ -33,10 +59,10 @@ function validateForm() {
     );
     return false;
   }
+
   return true;
 }
 
-function generatePDF() {
-  var element = document.getElementById("container");
-  html2pdf(element);
+async function runJsFile() {
+  console.log("JS file executed");
 }
