@@ -1,13 +1,21 @@
 body {
-  background-color: #f8f9fa;
+  font-family: Helvetica;
+  color: black;
+  background-image: linear-gradient(
+    to right,
+    rgb(67, 87, 255),
+    rgb(101, 212, 235)
+  );
 }
 .container {
   margin-top: 50px;
 }
 .card {
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  margin: auto;
+  background-color: rgb(249, 249, 251);
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .card-header {
   background-color: #007bff;
@@ -16,11 +24,17 @@ body {
   text-align: center;
 }
 
+.card-body {
+  margin-top: 12px;
+  padding: 12px 24px;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
 
 .btn-primary {
+  width: 100%;
   background-color: #007bff;
   border: 1px solid #007bff;
   margin: auto;
@@ -28,4 +42,13 @@ body {
 .btn-primary:hover {
   background-color: #0056b3;
   border: 1px solid #0056b3;
+}
+label {
+  letter-spacing: 2px;
+  color: rgb(94, 91, 91);
+}
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+  }
 }
